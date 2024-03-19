@@ -7,7 +7,7 @@ from sympy import simplify
 A, B, C = symbols('A B C')
 
 # Criando a sentença lógica
-sentenca = And(Or(A, B), Not(C))
+sentenca = str(input("digite sua sentenca no formato: operacao(elemento1, elemento2): "))
 
 # Simplificando a sentença lógica
 sentenca_simplificada = simplify(sentenca)
