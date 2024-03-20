@@ -10,6 +10,7 @@ import operator
 from collections import defaultdict
 from functools import reduce
 from nltk.inference import ResolutionProverCommand
+from nltk.inference.resolution import ResolutionProver
 from nltk.inference.api import BaseProverCommand, Prover
 from nltk.inference import resolution
 from nltk.sem import skolemize
@@ -29,6 +30,7 @@ from nltk.sem.logic import (
 
 def seletor(funcao):
     if funcao == '1':
+        print('VOCÊ SELECIONOU INFORMAR A SENTENÇA NO FORMATO DE EXPRESSÃO LÓGICA')
         # Definindo as variáveis lógicas
         A, B, C = symbols('A B C')
 
@@ -53,22 +55,32 @@ def seletor(funcao):
         print(f'Contradição: {resultado_contradição}')
     
     elif funcao == '2':
+        print('VOCÊ SELECIONOU INFORMAR A SENTENÇA NO FORMATO DE LINGUAGEM NATURAL')
         read_expr = Expression.fromstring
 
-        """p1 = read_expr('all x.(man(x) -> mortal(x))')
-        p2 = read_expr('man(Socrates)')
-        c = read_expr('mortal(Socrates)')"""
+        """...................FORMATO DE ENTRADA PARA 2 PREMISSAS E UMA HIPÓTESE.................
+
+        premissa 1 = (all x.(caracteristica(x) -> consequencia(x))))
+        exemplo: (all x.(mulher(x) -> legal(x))) // (para toda pessoa, se a pessoa é mulher -> então a pessoa é legal)
+
+        premissa 2 = (caracteristica(fulano))
+        exemplo: (mulher(julia)) // (julia é mulher)
+
+        hipótese = (consequencia(fulano))
+        exemplo: (legal(julia)) // (julia é legal)"""
 
         p1 = read_expr(input(str('digite a primeira premissa: ')))
         p2 = read_expr(input(str('digite a segunda premissa: ')))
         c = read_expr(input(str('digite a hipotese: ')))
         logic.Counter._value = 0
-        tp = ResolutionProverCommand(c, [p1,p2])
+        tp = ResolutionProver().prove(c, [p1,p2], verbose = True)
         tp.prove()
 
         print(tp.proof())
     else:
         print('função inválida!')
+        funcao = input(str('Digite uma função válida: '))
+        seletor(funcao)
 
 print('funcao 1 -> sentença na linguagem logica')
 print('funcao 2 -> sentença em linguagem natural')
