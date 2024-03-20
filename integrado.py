@@ -64,10 +64,10 @@ def seletor(funcao):
         exemplo: (all x.(mulher(x) -> legal(x))) // (para toda pessoa, se a pessoa é mulher -> então a pessoa é legal)
 
         premissa 2 = (caracteristica(fulano))
-        exemplo: (mulher(julia)) // (julia é mulher)
+        exemplo: (mulher(fulana)) // (fulana é mulher)
 
         hipótese = (consequencia(fulano))
-        exemplo: (legal(julia)) // (julia é legal)"""
+        exemplo: (legal(fulana)) // (fulana é legal)"""
 
         p1 = read_expr(input(str('digite a primeira premissa: ')))
         p2 = read_expr(input(str('digite a segunda premissa: ')))
