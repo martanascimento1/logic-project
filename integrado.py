@@ -82,7 +82,7 @@ def seletor(funcao):
         funcao = input(str('Digite uma função válida: '))
         seletor(funcao)
 
-print('funcao 1 -> sentença na linguagem logica')
-print('funcao 2 -> sentença em linguagem natural')
+print('FUNCAO 1 -> SIMPLIFICAR SENTENÇA EM LINGUAGEM LOGICA')
+print('FUNCAO 2 -> RESOLUCAO DE SENTENÇA EM LINGUAGEM NATURAL')
 funcao = input(str('Digite a função desejada: '))
 seletor(funcao)
