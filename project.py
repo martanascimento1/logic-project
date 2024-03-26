@@ -1,30 +1,46 @@
-def traduzir_para_logica_proposicional(sentencas):
-    variaveis = {}
+def modus_ponens(premissas, conclusao):
+    if "P -> Q" in premissas and "P" in premissas:
+        return True
+    return False
 
-    # Solicitar ao usuário para inserir as palavras-chave e suas representações
-    while True:
-        palavra_chave = input("Digite uma palavra-chave (ou 'fim' para encerrar): ")
-        if palavra_chave.lower() == "fim":
-            break
-        variavel = input(f"Qual variável proposicional representa '{palavra_chave}'? ")
-        variaveis[palavra_chave] = variavel
+def modus_tollens(premissas, conclusao):
+    if "P -> Q" in premissas and "/Q" in premissas:
+        return True
+    return False
 
-    # Traduzir cada sentença em linguagem natural para linguagem lógica proposicional
-    sentencas_logicas = []
-    for sentenca in sentencas:
-        for palavra, variavel in variaveis.items():
-            sentenca = sentenca.replace(palavra, variavel)
-        sentencas_logicas.append(sentenca)
+def silogismo_hipotetico(premissas, conclusao):
+    if "A -> B" in premissas and "B -> C" in premissas:
+        return True
+    return False
 
-    return sentencas_logicas
+def silogismo_disjuntivo(premissas, conclusao):
+    if "P * Q" in premissas and "/P" in premissas:
+        return True
+    return False
 
-# Exemplo de uso
-quantidade = int(input("Digite a quantidade de sentenças: "))
-sentencas_naturais = []
-for i in range(quantidade):
-    sentenca_natural = input(f"Digite a {i+1}ª sentença em linguagem natural: ")
-    sentencas_naturais.append(sentenca_natural)
+def operacoes_logicas(premissas, conclusao):
+    if "P & Q" in premissas and "P" in premissas:
+        if "Q" in premissas:
+            return True
+        return False
+    elif "P & Q" in premissas and "Q" in premissas:
+        if "P" in premissas:
+            return True
+        return False
 
-sentencas_logicas = traduzir_para_logica_proposicional(sentencas_naturais)
-for i, sentenca_logica in enumerate(sentencas_logicas):
-    print(f"Sentença {i+1} em linguagem lógica proposicional: {sentenca_logica}")
+premissas_exemplo = input('Digite as premissas (usando letras de A a Z): ')
+conclusao_exemplo = input("Digite a conclusão (usando letras de A a Z): ")
+
+regras = [modus_ponens, modus_tollens, silogismo_hipotetico, silogismo_disjuntivo]
+
+valido = False
+for regra in regras:
+    resultado = regra(premissas_exemplo, conclusao_exemplo)
+    if resultado:
+        valido = True
+        break
+
+if valido:
+    print("O argumento é válido.")
+else:
+    print("O argumento é inválido.")
