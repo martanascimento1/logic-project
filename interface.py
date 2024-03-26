@@ -1,66 +1,33 @@
-import tkinter
-from tkinter import *
+from sympy import symbols
+from sympy.logic.boolalg import And, Implies
+from sympy.parsing.sympy_parser import parse_expr, ParseError
 
-class Application:
-    def __init__(self, master=None):
-        self.fontePadrao = ("Arial", "10")
-        self.primeiroContainer = Frame(master)
-        self.primeiroContainer["pady"] = 10
-        self.primeiroContainer.pack()
+# Definindo as variáveis lógicas
+A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S = symbols('A B C D E F G H I J K L M N O P Q R S')
 
-        self.segundoContainer = Frame(master)
-        self.segundoContainer["padx"] = 20
-        self.segundoContainer.pack()
+def modus_ponens(p, q, valor_p):
+    if valor_p:
+        return q
+    else:
+        return None
 
-        self.terceiroContainer = Frame(master)
-        self.terceiroContainer["padx"] = 20
-        self.terceiroContainer.pack()
+def seletor(funcao):
+    if funcao == '1':
+        sentenca = input('Digite a sentença em linguagem lógica: ')
+        try:
+            sentenca = parse_expr(sentenca)
+            # Aqui você pode adicionar o código para simplificar a sentença
+        except ParseError:
+            print('Erro ao analisar a sentença. Por favor, tente novamente.')
+    elif funcao == '2':
+        sentenca = input('Digite a sentença em linguagem natural: ')
+        # Aqui você pode adicionar o código para resolver a sentença
+    else:
+        print('função inválida!')
+        funcao = input(str('Digite uma função válida: '))
+        seletor(funcao)
 
-        self.quartoContainer = Frame(master)
-        self.quartoContainer["pady"] = 20
-        self.quartoContainer.pack()
-
-        self.titulo = Label(self.primeiroContainer, text="Dados do usuário")
-        self.titulo["font"] = ("Arial", "10", "bold")
-        self.titulo.pack()
-
-        self.nomeLabel = Label(self.segundoContainer,text="Nome", font=self.fontePadrao)
-        self.nomeLabel.pack(side=LEFT)
-
-        self.nome = Entry(self.segundoContainer)
-        self.nome["width"] = 30
-        self.nome["font"] = self.fontePadrao
-        self.nome.pack(side=LEFT)
-
-        self.senhaLabel = Label(self.terceiroContainer, text="Senha", font=self.fontePadrao)
-        self.senhaLabel.pack(side=LEFT)
-
-        self.senha = Entry(self.terceiroContainer)
-        self.senha["width"] = 30
-        self.senha["font"] = self.fontePadrao
-        self.senha["show"] = "*"
-        self.senha.pack(side=LEFT)
-
-        self.autenticar = Button(self.quartoContainer)
-        self.autenticar["text"] = "Autenticar"
-        self.autenticar["font"] = ("Calibri", "8")
-        self.autenticar["width"] = 12
-        self.autenticar["command"] = self.verificaSenha
-        self.autenticar.pack()
-
-        self.mensagem = Label(self.quartoContainer, text="", font=self.fontePadrao)
-        self.mensagem.pack()
-
-    #Método verificar senha
-    def verificaSenha(self):
-        usuario = self.nome.get()
-        senha = self.senha.get()
-        if usuario == "usuariodevmedia" and senha == "dev":
-            self.mensagem["text"] = "Autenticado"
-        else:
-            self.mensagem["text"] = "Erro na autenticação"
-
-
-root = Tk()
-Application(root)
-root.mainloop()
+print('FUNCAO 1 -> SIMPLIFICAR SENTENÇA EM LINGUAGEM LOGICA')
+print('FUNCAO 2 -> RESOLUCAO DE SENTENÇA EM LINGUAGEM NATURAL')
+funcao = input(str('Digite a função desejada: '))
+seletor(funcao)
