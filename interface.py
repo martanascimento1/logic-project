@@ -24,3 +24,4 @@ def operacoes_logicas(premissas, conclusao):
     elif "P & Q" in premissas and "Q" in premissas and conclusao == "P":
         return True
     return False
+# teste 
