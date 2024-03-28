@@ -28,6 +28,10 @@ def operacoes_logicas(premissas, conclusao):
             return True
         return False
 
+"""FORMATO DE ENTRADA EX.: 
+PREMISSA = ["A -> B", "B -> C", "A"]
+CONCLUSÃO  = "C" """
+
 premissas_exemplo = input('Digite as premissas (usando letras de A a Z): ')
 conclusao_exemplo = input("Digite a conclusão (usando letras de A a Z): ")
 
