@@ -22,3 +22,4 @@ print(traduzir_para_logica(sentenca1))  # Output: p and q
 print(traduzir_para_logica(sentenca2))  # Output: r or s
 print(traduzir_para_logica(sentenca3))  # Output: r -> u
 print(traduzir_para_logica(sentenca4))  # Output: ~u
+
