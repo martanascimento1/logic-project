@@ -47,4 +47,4 @@ for regra in regras:
 if valido:
     print("O argumento é válido.")
 else:
-    print("O argumento é inválido.")
+    print("O argumento é inválido. ")
