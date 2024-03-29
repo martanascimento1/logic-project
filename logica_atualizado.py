@@ -60,27 +60,27 @@ def operacoes_logicas(premissas, conclusao):
     return False
 
 
-"""FORMATOS DE ENTRADA E SAÍDA ESPERADOS: 
-MODUS PONENS
-premissas = P -> Q, P
-conclusao = Q
+print("FORMATOS DE ENTRADA E SAÍDA ESPERADOS:\n ")
+print("MODUS PONENS:")
+print("premissas = P -> Q, P")
+print("conclusao = Q\n")
 
-MODUS TOLLENS
-premissas = P -> Q, /Q
-conclusao = "/P
+print("MODUS TOLLENS:")
+print("premissas = P -> Q, /Q")
+print("conclusao = /P\n")
 
-SILOGISMO HIPOTÉTICO: 
-premissas = P -> Q, Q -> R
-conclusao = P -> R
+print("SILOGISMO HIPOTÉTICO:")
+print("premissas = P -> Q, Q -> R")
+print("conclusao = P -> R\n")
 
-SILOGISMO DISJUNTIVO:
-premissas = P * Q, /P
-conclusao = Q
+print("SILOGISMO DISJUNTIVO:")
+print("premissas = P * Q, /P")
+print("conclusao = Q\n")
 
-OPERAÇÕES LÓGICAS: 
-premissas = P & Q, P
-conclusao = Q
-"""
+print("OPERAÇÕES LÓGICAS:")
+print("premissas = P & Q")
+print("conclusao = P\n")
+
 
 premissas_exemplo = input('Digite as premissas (usando letras de A a Z): ')
 premissas_exemplo = premissas_exemplo.split(', ')
